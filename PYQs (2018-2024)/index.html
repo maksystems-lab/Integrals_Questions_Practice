@@ -38,24 +38,58 @@
 <body>
 
 <h1>CBSE 12th Integrals — Practice Questions</h1>
+<p style="color:#aaa; max-width:600px; margin:0 auto 30px;">
+  Free practice questions for CBSE Class 12 Maths, Integrals chapter. Click any question to zoom in.
+</p>
 
 <div class="grid" id="grid"></div>
 
+
 <script>
-  const total = 219; // change this number if your total is different
-  const folder = "PYQs (2018-2024)";
-  const grid = document.getElementById("grid");
+    const total = 219; // change this number if your total is different
+    const folder = "PYQs (2018-2024)";
+    const grid = document.getElementById("grid");
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    const modalClose = document.getElementById("modalClose");
+  
+    for (let i = 1; i <= total; i++) {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${folder}/Integrals_Q (${i}).png" alt="Question ${i}" loading="lazy">
+        <p>Q${i}</p>
+      `;
+      grid.appendChild(card);
+    }
+  
+    // Click-to-zoom logic
+    grid.addEventListener("click", function(e) {
+      if (e.target.tagName === "IMG") {
+        modalImg.src = e.target.src;
+        modal.classList.add("active");
+      }
+    });
+  
+    modalClose.addEventListener("click", function() {
+      modal.classList.remove("active");
+    });
+  
+    modal.addEventListener("click", function(e) {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+      }
+    });
+  </script>
 
-  for (let i = 1; i <= total; i++) {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <img src="${folder}/Integrals_Q (${i}).png" alt="Question ${i}" loading="lazy">
-      <p>Q${i}</p>
-    `;
-    grid.appendChild(card);
-  }
-</script>
 
+<div style="margin-top: 50px;">
+    <a href="PASTE_YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" 
+       style="color:#4da3ff; text-decoration:none; font-size:16px;">
+       📩 Found an issue or have feedback? Click here
+    </a>
+  </div>
+
+  
 </body>
 </html>
